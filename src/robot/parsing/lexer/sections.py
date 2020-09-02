@@ -24,6 +24,7 @@ class Sections(object):
     test_case_markers = ('Test Cases', 'Test Case', 'Tasks', 'Task')
     keyword_markers = ('Keywords', 'Keyword')
     comment_markers = ('Comments', 'Comment')
+    python_markers = ('Python')
 
     def setting(self, statement):
         return self._handles(statement, self.setting_markers)
@@ -39,6 +40,9 @@ class Sections(object):
 
     def comment(self, statement):
         return self._handles(statement, self.comment_markers)
+
+    def python(self, statement):
+        return self._handles(statement, self.python_markers)
 
     def _handles(self, statement, markers):
         marker = statement[0].value
@@ -95,3 +99,11 @@ class InitFileSections(Sections):
                        "'Settings', 'Variables', 'Keywords' and 'Comments'."
                        % header)
         return message, False
+
+
+class PythonCodeFileSection(Sections):
+
+    def _get_invalid_section_error(self, header):
+        return ("Unrecognized section header '%s'. Valid sections: "
+                "'Settings', 'Variables', 'Test Cases', 'Tasks', "
+                "'Keywords' and 'Comments'." % header), False

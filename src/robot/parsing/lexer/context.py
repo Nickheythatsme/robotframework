@@ -14,7 +14,7 @@
 #  limitations under the License.
 
 from .sections import (InitFileSections, TestCaseFileSections,
-                       ResourceFileSections)
+                       ResourceFileSections, PythonCodeFileSection)
 from .settings import (InitFileSettings, TestCaseFileSettings,
                        ResourceFileSettings, TestCaseSettings, KeywordSettings)
 
@@ -74,6 +74,11 @@ class ResourceFileContext(FileContext):
 class InitFileContext(FileContext):
     sections_class = InitFileSections
     settings_class = InitFileSettings
+
+
+class PythonFileContext(FileContext):
+    sections_class = PythonFileSections
+    settings_class = PythonFileSettings
 
 
 class TestCaseContext(LexingContext):

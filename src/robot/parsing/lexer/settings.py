@@ -224,3 +224,10 @@ class KeywordSettings(Settings):
 
     def _format_name(self, name):
         return name[1:-1].strip()
+
+
+class PythonSettings(Settings):
+    names = (
+        'Documentation',
+        'Tags',
+    )
